@@ -186,8 +186,8 @@ class QinHuangDaoSpider:
 
 if __name__ == "__main__":
     # 从环境变量中获取钉钉机器人token和secret
-    DINGTALK_TOKEN = os.getenv('DD_ACCESS_TOKEN_xq')
-    DINGTALK_SECRET = os.getenv('DD_SECRET_xq')
+    DINGTALK_TOKEN = os.getenv('DD_ACCESS_TOKEN_XQ')
+    DINGTALK_SECRET = os.getenv('DD_SECRET_XQ')
     
     if not DINGTALK_TOKEN or not DINGTALK_SECRET:
         print("错误：未设置钉钉机器人token或secret")
