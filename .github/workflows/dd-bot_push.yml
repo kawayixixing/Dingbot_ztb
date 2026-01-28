@@ -37,8 +37,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests==2.31.0 beautifulsoup4==4.12.2 lxml==5.1.0
 
-      - name: 运行政府采购网站爬虫
+      - name: 运行脚本1
         env:
           DD_ACCESS_TOKEN: ${{ secrets.DD_ACCESS_TOKEN }}
           DD_SECRET: ${{ secrets.DD_SECRET }}
         run: python gsei_dd.py
+      - name: 运行脚本2
+        env:
+          DD_ACCESS_TOKEN: ${{ secrets.DD_ACCESS_TOKEN_xq }}
+          DD_SECRET: ${{ secrets.DD_SECRET_xq }}
+        run: python qhzy_dd.py
