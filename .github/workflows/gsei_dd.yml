@@ -1,0 +1,46 @@
+name: 政府采购网站招标信息监控
+
+on:
+  push:
+    paths:
+      - '**'
+  pull_request:
+    paths:
+      - '**'
+  schedule:
+    # 每天上午10点执行（北京时间）
+    - cron: "30 09 * * *"
+      timezone: Asia/Shanghai
+  # 支持手动触发
+  workflow_dispatch:
+
+jobs:
+  monitor_bidding:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 设置Python环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests==2.31.0 beautifulsoup4==4.12.2 lxml==5.1.0
+
+      - name: 运行政府采购网站爬虫
+        env:
+          DD_ACCESS_TOKEN: ${{ secrets.DD_ACCESS_TOKEN }}
+          DD_SECRET: ${{ secrets.DD_SECRET }}
+        run: python gsei_dd.py
+
+      - name: 提交变更
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "自动更新招标信息 $(date +'%Y-%m-%d %H:%M:%S')" && git push)
