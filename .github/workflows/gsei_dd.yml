@@ -10,8 +10,12 @@ on:
     paths:  # 修改点2：正确的数组格式
       - '**'
   schedule:
-    # 每天上午10点执行（北京时间）
-    - cron: "30 09 * * *"
+    # 每天上午09:30点执行（北京时间）
+    - cron: "30 01 * * *"
+      timezone: Asia/Shanghai
+    - cron: "0 7 * * *"
+      timezone: Asia/Shanghai 
+    - cron: "30 11 * * *"
       timezone: Asia/Shanghai
   workflow_dispatch:
 
