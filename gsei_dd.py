@@ -141,7 +141,7 @@ class GSEISpider:
         if not results:
             return f"## {self.today} 无新招标信息\n\n今日没有找到新的公开招标信息。"
             
-        message = f"## {self.today} 公开招标信息更新\n\n"
+        message = f"## {self.today} 甘肃公开招标信息更新\n\n"
         
         # 获取当前已发送的链接
         sent_links = [item['链接'] for item in self.sent_links]
@@ -150,7 +150,7 @@ class GSEISpider:
         new_results = [item for item in results if item['链接'] not in sent_links]
         
         if not new_results:
-            return f"## {self.today} 无新招标信息\n\n今日没有找到新的公开招标信息。"
+            return f"## {self.today} 无新招标信息\n\n今日甘肃没有找到新的公开招标信息。"
         
         # 将新信息添加到已发送列表的前面（保持倒序）
         self.sent_links = new_results + self.sent_links
