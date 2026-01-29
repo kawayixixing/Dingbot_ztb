@@ -179,7 +179,7 @@ class QinHuangDaoSpider:
             if send_dingtalk and self.dingtalk:
                 self.dingtalk.send_markdown(
                     f"{self.today} 青海无新招标信息",
-                    f"## {self.today} 无新招标信息\n\n未找到今日的公开招标信息。"
+                    f"## {self.today} 无新招标信息\n\n青海未找到今日的公开招标信息。"
                 )
 
         return all_links
