@@ -122,7 +122,7 @@ class QinHuangDaoSpider:
     def format_dingtalk_message(self, results):
         """格式化钉钉消息"""
         if not results:
-            return f"## {self.today} 无新招标信息\n\n今日没有找到新的公开招标信息。"
+            return f"## {self.today} 无新招标信息\n\n青海今日没有找到新的公开招标信息。"
             
         message = f"## {self.today} 青海省公共资源交易中心招标信息\n\n"
         
@@ -133,7 +133,7 @@ class QinHuangDaoSpider:
         new_results = [item for item in results if item['链接'] not in sent_links]
         
         if not new_results:
-            return f"## {self.today} 无新招标信息\n\n今日没有找到新的公开招标信息。"
+            return f"## {self.today} 无新招标信息\n\n青海今日没有找到新的公开招标信息。"
         
         # 将新信息添加到已发送列表的前面（保持倒序）
         self.sent_links = new_results + self.sent_links
@@ -178,7 +178,7 @@ class QinHuangDaoSpider:
             print(f"未找到 {self.today} 的公开招标信息")
             if send_dingtalk and self.dingtalk:
                 self.dingtalk.send_markdown(
-                    f"{self.today} 无新招标信息",
+                    f"{self.today} 青海无新招标信息",
                     f"## {self.today} 无新招标信息\n\n未找到今日的公开招标信息。"
                 )
 
