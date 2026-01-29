@@ -39,8 +39,8 @@ jobs:
 
       - name: 运行脚本1
         env:
-          DD_ACCESS_TOKEN: ${{ secrets.DD_ACCESS_TOKEN }}
-          DD_SECRET: ${{ secrets.DD_SECRET }}
+          DD_ACCESS_TOKEN: ${{ secrets.DD_ACCESS_TOKEN_XQ }}
+          DD_SECRET: ${{ secrets.DD_SECRET_XQ }}
         run: python gsei_dd.py
       - name: 运行脚本2
         env:
